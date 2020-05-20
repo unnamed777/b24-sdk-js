@@ -1,0 +1,25 @@
+{
+  "name": "b24-sdk",
+  "version": "0.9.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/unnamed777/b24-sdk-js.git"
+  },
+  "keywords": [
+    "bitrix24"
+  ],
+  "author": "Andrey Neyman <andrey@neyman.tel>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/unnamed777/b24-sdk-js/issues"
+  },
+  "homepage": "https://github.com/unnamed777/b24-sdk-js#readme",
+  "dependencies": {
+    "bx24wrapper": "git@github.com:unnamed777/bx24wrapper.git"
+  }
+}
