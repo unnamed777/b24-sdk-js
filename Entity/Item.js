@@ -19,7 +19,8 @@ export default class Item extends AbstractEntity {
     }
 
     /**
-     * @param {{ENTITY: string}} params
+     * @param {B24EntityItemGetParams} payload
+     * @param {Object} options
      *
      * @typedef {Object} B24EntityItemGetParams
      * @property {string} ENTITY
@@ -28,8 +29,8 @@ export default class Item extends AbstractEntity {
      *
      * @returns {Promise<Collection>}
      */
-    static load(params = {}) {
-        return super.load(params);
+    static load(payload = {}, options = {}) {
+        return super.load(payload, options);
     }
 
     prepareFieldsToSave(fields) {
