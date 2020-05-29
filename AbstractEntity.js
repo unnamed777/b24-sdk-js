@@ -120,13 +120,15 @@ export default class AbstractEntry {
                 ...payload,
                 start: parseInt(options.page - 1, 10) * this.PAGE_SIZE,
             };
-        } else if (options.start) {
+        } else if (options.start !== undefined) {
             fetchMethod = 'fetch';
 
             payload = {
                 ...payload,
                 start: options.start,
             };
+        } else if (options.fast === true) {
+            fetchMethod = 'fastFetchAll';
         } else {
             fetchMethod = 'fetchAll';
         }

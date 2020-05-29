@@ -19,6 +19,16 @@ export default class Item extends AbstractEntity {
     }
 
     /**
+     * @param {Object} payload
+     * @returns {*}
+     */
+    static prepareListPayload(payload) {
+        payload.SORT = payload.SORT || this.defaultOrder;
+
+        return payload;
+    }
+
+    /**
      * @param {B24EntityItemGetParams} payload
      * @param {Object} options
      *
