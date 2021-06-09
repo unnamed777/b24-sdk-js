@@ -80,8 +80,9 @@ export default class AbstractEntry {
                     entry[field] = parseInt(value, 10);
                     break;
 
-                case 'moment':
-                    entry[field] = value ? moment(value) : null;
+                case 'date':
+                case 'datetime':
+                    entry[field] = value ? new Date(value) : null;
                     break;
 
                 default:
