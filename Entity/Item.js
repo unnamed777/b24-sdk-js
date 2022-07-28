@@ -113,4 +113,76 @@ export default class Item extends AbstractEntity {
         console.log('Batch result', success);
         return success;
     }
+
+    /**
+     * Adds entry
+     *
+     * @param {string} entity ENTITY
+     * @param {number|string} id ID
+     * @param {Object} fields
+     * @returns {Promise<number>} New entry id
+     */
+    static async add(entity, fields)
+    {
+        fields = { ...fields };
+        fields.ENTITY = entity;
+
+        if (!fields.ENTITY) {
+            throw Error('ENTITY is required');
+        }
+
+        const result = await BX24Wrapper.callRaw(this.addEndpoint, fields);
+        return result.answer.result;
+    }
+    
+    /**
+     * Updates entry
+     * 
+     * @param {string} entity ENTITY
+     * @param {number|string} id ID
+     * @param {Object} fields
+     * @returns {Promise<void>}
+     */
+    static async update(entity, id, fields)
+    {
+        fields = { ...fields };
+        fields.ENTITY = entity;
+        fields.ID = id;
+        
+        if (!fields.ENTITY) {
+            throw Error('ENTITY is required');
+        }
+        
+        if (!fields.ID) {
+            throw Error('ID is required');
+        }
+        
+        const result = await BX24Wrapper.callRaw(this.updateEndpoint, fields);
+        return result.answer.result;
+    }
+    
+    /**
+     * Deletes entry
+     * 
+     * @param {string} entity ENTITY
+     * @param {number|string} id ID
+     * @returns {Promise<void>}
+     */
+    static delete(entity, id)
+    {
+        let fields = {
+            ENTITY: entity,
+            ID: id
+        };
+
+        if (!fields.ENTITY) {
+            throw Error('ENTITY is required');
+        }
+
+        if (!fields.ID) {
+            throw Error('ID is required');
+        }
+
+        return BX24Wrapper.callRaw(this.deleteEndpoint, fields);
+    }
 }

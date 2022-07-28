@@ -4,7 +4,7 @@ import Collection from './Collection';
 export default class AbstractEntry {
     static get aliases() {
         return {
-            // 'ALIAS_NAME': 'ORIGINAL_FIELD_NAME'
+            // 'UF_ORIGINAL_NAME': 'NEW_FIELD_NAME'
         }
     }
 
@@ -36,7 +36,15 @@ export default class AbstractEntry {
      * @returns {*}
      */
     static resolveAlias(alias) {
-        return this.aliases[alias];
+        if (!this.flippedAliases) {
+            this.flippedAliases = {};
+
+            for (let entry of Object.entries(this.aliases)) {
+                this.flippedAliases[entry[1]] = entry[0];
+            }
+        }
+
+        return this.flippedAliases[alias];
     }
 
     static applyModifiers(entry) {
@@ -48,16 +56,10 @@ export default class AbstractEntry {
      * Set aliases for fields. Useful for UF_*
      */
     static applyAliases(entry) {
-        if (!this.flippedAliases) {
-            this.flippedAliases = {};
+        const aliases = this.aliases;
 
-            for (let entry of Object.entries(this.aliases)) {
-                this.flippedAliases[entry[1]] = entry[0];
-            }
-        }
-        
-        for (let originalKey in this.flippedAliases) {
-            entry[this.flippedAliases[originalKey]] = entry[originalKey];
+        for (let originalKey in aliases) {
+            entry[aliases[originalKey]] = entry[originalKey];
         }
     }
 
@@ -83,6 +85,10 @@ export default class AbstractEntry {
                 case 'date':
                 case 'datetime':
                     entry[field] = value ? new Date(value) : null;
+                    break;
+
+                case 'moment':
+                    entry[field] = value ? moment(value) : null;
                     break;
 
                 default:
