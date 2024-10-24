@@ -28,6 +28,10 @@ export default class AbstractEntry {
     static get listEndpoint() {
         return '';
     }
+    
+    static get listDomain() {
+        return '';
+    }
 
     /**
      * Returns original field name by alias
@@ -137,7 +141,11 @@ export default class AbstractEntry {
         } else {
             fetchMethod = 'fetchAll';
         }
-
+        
+        if (this.listDomain && options.getter === undefined) {
+            options.getter = (response) => response[this.listDomain];
+        }
+        
         return BX24Wrapper[fetchMethod](
             this.listEndpoint,
             payload,
