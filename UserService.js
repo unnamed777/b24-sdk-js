@@ -1,8 +1,12 @@
-import AbstractEntity from './AbstractEntity';
+import AbstractEntityService from './AbstractEntityService';
 
-export default class User extends AbstractEntity {
+export default class UserService extends AbstractEntityService {
     static get listEndpoint() {
         return 'user.get';
+    }
+
+    static get defaultSelect() {
+        return undefined;
     }
 
     /**

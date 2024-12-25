@@ -1,7 +1,7 @@
-import AbstractEntity from '../AbstractEntity';
+import AbstractEntityService from '../AbstractEntityService';
 import BX24Wrapper from 'bx24wrapper';
 
-export default class Item extends AbstractEntity {
+export default class ItemService extends AbstractEntityService {
     static get listEndpoint() {
         return 'entity.item.get';
     }

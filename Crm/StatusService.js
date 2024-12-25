@@ -1,6 +1,6 @@
-import AbstractEntity from '../AbstractEntity';
+import AbstractEntityService from '../AbstractEntityService';
 
-export default class Status extends AbstractEntity {
+export default class StatusService extends AbstractEntityService {
     static get defaultOrder() {
         return {
             'ENTITY_ID': 'ASC',

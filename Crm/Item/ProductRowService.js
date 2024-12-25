@@ -1,7 +1,7 @@
-import AbstractEntity from '../../AbstractEntity';
+import AbstractEntityService from '../../AbstractEntityService';
 import Collection from '../../Collection';
 
-export default class ProductRowService extends AbstractEntity {
+export default class ProductRowService extends AbstractEntityService {
     static get listEndpoint() {
         return 'crm.item.productrow.list';
     }

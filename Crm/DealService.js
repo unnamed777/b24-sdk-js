@@ -1,6 +1,6 @@
-import AbstractEntity from '../AbstractEntity';
+import AbstractEntityService from '../AbstractEntityService';
 
-export default class Deal extends AbstractEntity {
+export default class DealService extends AbstractEntityService {
     static get listEndpoint() {
         return 'crm.deal.list';
     }

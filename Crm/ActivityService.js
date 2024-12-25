@@ -1,6 +1,6 @@
-import AbstractEntity from '../AbstractEntity';
+import AbstractEntityService from '../AbstractEntityService';
 
-export default class Activity extends AbstractEntity {
+export default class ActivityService extends AbstractEntityService {
     static get OWNER_TYPE_LEAD() {
         return 1;
     }

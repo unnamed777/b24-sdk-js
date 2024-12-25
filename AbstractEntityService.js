@@ -1,7 +1,7 @@
 import BX24Wrapper from 'bx24wrapper';
 import Collection from './Collection';
 
-export default class AbstractEntry {
+export default class AbstractEntryService {
     static get aliases() {
         return {
             // 'UF_ORIGINAL_NAME': 'NEW_FIELD_NAME'
