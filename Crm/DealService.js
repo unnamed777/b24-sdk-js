@@ -5,6 +5,10 @@ export default class DealService extends AbstractEntityService {
         return 'crm.deal.list';
     }
 
+    static get endpoint() {
+        return 'crm.deal.get';
+    }
+
     /**
      * @param {DealFilterParams} payload
      * @param {Object} options

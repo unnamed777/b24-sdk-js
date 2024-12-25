@@ -20,4 +20,8 @@ export default class ActivityService extends AbstractEntityService {
     static get listEndpoint() {
         return 'crm.activity.list';
     }
+
+    static get endpoint() {
+        return 'crm.activity.get';
+    }
 }

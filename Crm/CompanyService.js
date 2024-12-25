@@ -5,6 +5,10 @@ export default class CompanyService extends AbstractEntityService {
         return 'crm.company.list';
     }
 
+    static get endpoint() {
+        return 'crm.company.get';
+    }
+
     /**
      * @param {CompanyFilterParams} payload
      * @param {Object} options

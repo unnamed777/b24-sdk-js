@@ -5,6 +5,10 @@ export default class LeadService extends AbstractEntityService {
         return 'crm.lead.list';
     }
 
+    static get endpoint() {
+        return 'crm.lead.get';
+    }
+
     /**
      * @param {LeadFilterParams} payload
      * @param {Object} options

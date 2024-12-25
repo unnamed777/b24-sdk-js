@@ -33,6 +33,10 @@ export default class AbstractEntryService {
         return '';
     }
 
+    static get getDomain() {
+        return '';
+    }
+
     /**
      * Returns original field name by alias
      *
@@ -156,5 +160,31 @@ export default class AbstractEntryService {
 
             return collection;
         });
+    }
+
+    /**
+     *
+     * @param {Number|String|Object} payload If `payload` is int or string, it transformed to `{ id: payload }`
+     * @returns {Promise<Object>}
+     */
+    static async get(payload, options = {}) {
+        if (Number.isInteger(payload) || typeof payload === 'string') {
+            payload = { id: payload };
+        }
+
+        if (this.getDomain && options.getter === undefined) {
+            options.getter = (response) => response[this.getDomain];
+        }
+
+        let result = await BX24Wrapper.fetch(
+            this.endpoint,
+            payload,
+            {...options, total: true}
+        );
+
+        let entry = result.entries || null;
+        this.applyModifiers(entry);
+
+        return entry;
     }
 }
